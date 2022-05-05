@@ -1,5 +1,9 @@
 extends index.pug
 
 block content
+  +inputGroup
+    +formControl('text')
+    +button('Add')
+
   each todo in todos
     h3= todo.description
