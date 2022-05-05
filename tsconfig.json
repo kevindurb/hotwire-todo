@@ -1,23 +1,13 @@
 {
-  "extends": "@tsconfig/node14/tsconfig.json",
   "compilerOptions": {
-    "lib": ["DOM", "ES2019"],
-    "allowSyntheticDefaultImports": true,
-    "alwaysStrict": true,
-    "baseUrl": ".",
-    "esModuleInterop": true,
+    "lib": ["es5", "es6"],
+    "target": "es5",
     "module": "commonjs",
     "moduleResolution": "node",
-    "noImplicitAny": true,
-    "outDir": "dist",
-    "resolveJsonModule": true,
-    "rootDir": "src",
-    "sourceMap": true,
-    "strict": true,
-    "target": "ES2019",
-    "paths": {
-      "*": ["node_modules/*"]
-    }
-  },
-  "include": ["src/**/*"]
+    "outDir": "./dist",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "sourceMap": true
+  }
 }
