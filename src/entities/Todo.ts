@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
-import { Transform } from 'class-transformer';
+import { Type } from 'class-transformer';
 import { IsNotEmpty, IsBoolean } from 'class-validator';
 
 @Entity()
@@ -13,9 +13,6 @@ export class Todo {
 
   @IsBoolean()
   @Column()
-  @Transform(({ value }) => {
-    console.log(value);
-    return JSON.parse(value);
-  })
+  @Type(() => Boolean)
   isDone: boolean = false;
 }
