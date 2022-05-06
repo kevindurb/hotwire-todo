@@ -1,4 +1,6 @@
-mixin formControl
+mixin formControl(label)
+  if label
+    label.form-label= label
   input.form-control&attributes(attributes)
 
 mixin button(text)

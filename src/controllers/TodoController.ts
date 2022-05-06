@@ -10,13 +10,9 @@ import {
 import { getTodoRepository } from '../repositories';
 import { Todo } from '../entities/Todo';
 
-@Controller()
+@Controller('/todos')
 export class TodoController {
-  @Get('/')
-  @Redirect('/todos')
-  async indexRedirect() {}
-
-  @Get('/todos')
+  @Get()
   @Render('todoList.pug')
   async getList() {
     const todoRepository = await getTodoRepository();
@@ -25,20 +21,19 @@ export class TodoController {
     };
   }
 
-  @Post('/todos')
+  @Post()
   @Redirect('/todos')
-  async createTodo(@Body({ validate: true }) todo: Todo) {
+  async create(@Body({ validate: true }) todo: Todo) {
     const todoRepository = await getTodoRepository();
     await todoRepository.save(todo);
   }
 
-  @Post('/todos/:id')
+  @Post('/:id')
   @Redirect('/todos')
-  async updateTodo(
+  async update(
     @Param('id') id: number,
     @Body({ validate: { skipMissingProperties: true } }) updates: Todo,
   ) {
-    console.log(updates);
     const todoRepository = await getTodoRepository();
     await todoRepository.update({ id }, updates);
   }
