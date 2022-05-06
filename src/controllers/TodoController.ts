@@ -26,10 +26,8 @@ export class TodoController {
 
   @Post('/todos')
   @Redirect('/todos')
-  async createTodo(@Body() body: any) {
-    const todo = new Todo();
-    todo.description = body.description ?? '';
+  async createTodo(@Body({ validate: true }) todo: Todo) {
     const todoRepository = await getTodoRepository();
-    todoRepository.save(todo);
+    await todoRepository.save(todo);
   }
 }

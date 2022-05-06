@@ -1,14 +1,16 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
-import {} from 'class-validator';
+import { IsNotEmpty, IsBoolean } from 'class-validator';
 
 @Entity()
 export class Todo {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @IsNotEmpty()
   @Column()
-  description: string;
+  description: string = '';
 
+  @IsBoolean()
   @Column()
-  isDone: boolean;
+  isDone: boolean = false;
 }

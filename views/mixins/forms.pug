@@ -1,8 +1,11 @@
-mixin formControl(type)
-  input.form-control(type=type)
+mixin formControl
+  input.form-control&attributes(attributes)
 
 mixin button(text)
   button.btn.btn-primary= text
+
+mixin submitButton(text)
+  input.btn.btn-primary(type='submit', value=text)
 
 mixin inputGroup
   .input-group

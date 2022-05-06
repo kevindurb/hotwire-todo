@@ -1,9 +1,10 @@
 extends index.pug
 
 block content
-  +inputGroup
-    +formControl('text')
-    +button('Add')
+  form(action='/todos', method='post')
+    +inputGroup
+      +formControl(type='text', name='description', required)
+      +submitButton('Add')
 
   each todo in todos
     h3= todo.description
