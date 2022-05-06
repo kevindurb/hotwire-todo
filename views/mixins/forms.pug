@@ -4,8 +4,8 @@ mixin formControl
 mixin button(text)
   button.btn.btn-primary= text
 
-mixin submitButton(text)
-  input.btn.btn-primary(type='submit', value=text)
+mixin submitButton(text, kind='primary')
+  input.btn(type='submit', value=text, class='btn-' + kind)&attributes(attributes)
 
 mixin inputGroup
   .input-group

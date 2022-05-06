@@ -1,10 +1,21 @@
 extends index.pug
 
 block content
-  form(action='/todos', method='post')
+  form.my-4(action='/todos', method='post')
     +inputGroup
       +formControl(type='text', name='description', required)
       +submitButton('Add')
 
-  each todo in todos
-    h3= todo.description
+  ul.list-group.my-4
+    each todo in todos
+      li.list-group-item
+        form.d-flex.align-items-center(
+          action='/todos/' + todo.id,
+          method='post'
+        )
+          .flex-grow-1= todo.description
+          if !todo.isDone
+            input(type='hidden', name='isDone', value='true')
+            +submitButton('Mark Done')
+          else
+            +submitButton('Done', 'secondary')(disabled)
