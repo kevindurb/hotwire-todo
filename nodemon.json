@@ -1,4 +1,0 @@
-{
-  "watch": ["./dist", "./views"],
-  "ext": "pug,js"
-}
