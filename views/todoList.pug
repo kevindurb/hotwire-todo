@@ -8,7 +8,7 @@ block content
 
   ul.list-group.my-4
     each todo in todos
-      li.list-group-item
+      li.list-group-item.todo-item
         form.d-flex.align-items-center(
           action='/todos/' + todo.id,
           method='post'

@@ -7,7 +7,7 @@ let dataSource: DataSource | undefined;
 
 export const getDataSource = async () => {
   if (!dataSource) {
-    buildDataSource(path.join(__dirname, './db.sqlite'));
+    buildDataSource(path.join(__dirname, '../db.sqlite'));
   }
 
   if (!dataSource.isInitialized) {
