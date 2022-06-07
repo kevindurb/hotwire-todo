@@ -15,6 +15,10 @@ export const renderDOM = (html: string) => {
 
 export const resetTestDB = async () => {
   const dbPath = '/tmp/test.sqlite';
-  await fs.rm(dbPath);
+  try {
+    if ((await fs.stat(dbPath)).isFile) {
+      await fs.rm(dbPath);
+    }
+  } catch {}
   buildDataSource(dbPath);
 };
