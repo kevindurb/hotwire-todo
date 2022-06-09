@@ -8,7 +8,7 @@
   "scripts": {
     "start": "node ./dist",
     "build": "tsc",
-    "test": "jest",
+    "test": "jest --runInBand",
     "typeorm": "typeorm-ts-node-commonjs"
   },
   "dependencies": {
