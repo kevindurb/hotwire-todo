@@ -1,12 +1,8 @@
 import request from 'supertest';
-import { renderDOM, resetTestDB } from '../test/utils';
-import app from '../app';
+import { renderDOM } from '../utils';
+import app from '../../app';
 
-describe('TodoController', () => {
-  beforeAll(async () => {
-    await resetTestDB();
-  });
-
+describe('todos', () => {
   test('creating todos', async () => {
     await request(app).post('/todos').send('description=hello').expect(302);
   });
