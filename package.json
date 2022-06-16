@@ -8,17 +8,25 @@
   "scripts": {
     "start": "node ./dist",
     "build": "tsc",
-    "test": "jest --runInBand"
+    "test": "jest --runInBand",
+    "knex": "knex --knexfile ./src/knexfile.ts",
+    "migrate:make": "yarn knex migrate:make",
+    "migrate:rollback": "yarn knex migrate:rollback",
+    "migrate:up": "yarn knex migrate:up",
+    "migrate:down": "yarn knex migrate:down",
+    "migrate:list": "yarn knex migrate:list"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
     "body-parser": "^1.20.0",
     "express": "^4.18.1",
+    "humps": "^2.0.1",
     "knex": "^2.1.0",
     "multer": "^1.4.4",
     "pug": "^3.0.2",
     "sqlite3": "^5.0.7",
-    "typescript": "^4.6.4"
+    "typescript": "^4.6.4",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@prettier/plugin-pug": "^2.0.0",
@@ -26,6 +34,7 @@
     "@tsconfig/node14": "^1.0.1",
     "@types/body-parser": "^1.19.2",
     "@types/express": "^4.17.13",
+    "@types/humps": "^2.0.1",
     "@types/jest": "^27.5.0",
     "@types/jsdom": "^16.2.14",
     "@types/multer": "^1.4.7",

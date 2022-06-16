@@ -1,5 +1,4 @@
-import { Knex } from 'knex';
-import { Todo } from './Todo';
+import { Todo } from '../entities/todo';
 
 declare module 'knex/types/tables' {
   interface Tables {

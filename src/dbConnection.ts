@@ -1,8 +1,4 @@
 import knex from 'knex';
+import config from './knexfile';
 
-export const connection = knex({
-  client: 'sqlite3',
-  connection: {
-    filename: ':memory:',
-  },
-});
+export const connection = knex(config.development);

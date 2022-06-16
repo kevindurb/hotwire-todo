@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import * as yup from 'yup';
 
 export const redirectTo =
   (path: string) => (request: Request, response: Response) =>
@@ -10,7 +11,11 @@ export const asyncHandler =
     try {
       await handler(request, response);
     } catch (e) {
-      console.error(e);
-      response.status(500).end();
+      if (e instanceof yup.ValidationError) {
+        response.status(400).end();
+      } else {
+        console.error(e);
+        response.status(500).end();
+      }
     }
   };

@@ -14,8 +14,8 @@ block content
           method='post'
         )
           .flex-grow-1= todo.description
-          if !todo.isDone
-            input(type='hidden', name='isDone', value='true')
+          if !todo.done
+            input(type='hidden', name='done', value='true')
             +submitButton('Mark Done')
           else
             +submitButton('Done', 'secondary')(disabled)
