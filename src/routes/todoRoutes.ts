@@ -1,6 +1,7 @@
 import { Router } from 'express';
-import { todoController } from '../controllers/todoController';
+import * as routingUtils from '../utils/routing';
+import * as todoController from '../controllers/todoController';
 
 export const router = Router();
 
-router.get('/', todoController.getList);
+router.get('/', routingUtils.asyncHandler(todoController.getList));

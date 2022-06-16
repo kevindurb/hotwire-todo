@@ -1,9 +1,7 @@
 import { Request, Response } from 'express';
-import { Todo } from '../types/Todo';
-import { connection } from '../dbConnection';
+import * as todoGateway from '../gateways/todoGateway';
 
-export const todoController = {
-  async getList(request: Request, response: Response) {
-    return response.render('todoList.pug', { todos: [] });
-  },
+export const getList = async (request: Request, response: Response) => {
+  const todos = await todoGateway.getAllTodos();
+  return response.render('todoList.pug', { todos });
 };
