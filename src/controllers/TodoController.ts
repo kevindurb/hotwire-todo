@@ -9,7 +9,7 @@ router.get(
   '/',
   routingUtils.asyncHandler(async (request, response) => {
     const todos = await todoGateway.getAllTodos();
-    response.render('todoList.pug', { todos });
+    response.render('todos/list', { todos });
   }),
 );
 
@@ -51,6 +51,6 @@ router.get(
       return;
     }
 
-    response.render('todoDetail.pug', { todo });
+    response.render('todos/detail', { todo });
   }),
 );

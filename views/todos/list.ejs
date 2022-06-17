@@ -1,0 +1,14 @@
+<%- include('../layouts/header') -%>
+<form class="my-4" action="/todos" method="post">
+  <div class="input-group">
+    <input class="form-control" type="text" name="description" required />
+    <input class="btn btn-primary" type="submit" value="Add" />
+  </div>
+</form>
+
+<ul class="list-group my-4">
+  <%-
+  todos.map((todo) => include('./listItem', { todo })).join('')
+  %>
+</ul>
+<%- include('../layouts/footer') -%>

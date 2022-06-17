@@ -1,0 +1,14 @@
+<li class="list-group-item todo-item">
+  <form class="d-flex align-items-center" action="/todos/<%= todo.id %>" method="post">
+    <a class="flex-grow-1" href="/todos/<%= todo.id %>">
+      <%= todo.description %>
+    </a>
+
+    <% if (!todo.done) { %>
+    <input type="hidden" name="done" value="true" />
+    <input class="btn btn-primary" type="submit" value="Mark Done" />
+    <% } else { %>
+    <input class="btn btn-secondary" type="submit" value="Done" disabled />
+    <% } %>
+  </form>
+</li>
