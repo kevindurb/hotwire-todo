@@ -19,7 +19,7 @@ router.post(
     const id = parseInt(request.params.id);
     const data = request.body;
     await createTodoValidator.validate(data);
-    const todo = todoGateway.getTodo(id);
+    const todo = await todoGateway.getTodo(id);
 
     if (todo) {
       await todoGateway.updateTodo(id, data);
@@ -37,5 +37,20 @@ router.post(
     await todoGateway.createTodo(data);
 
     response.redirect('/todos');
+  }),
+);
+
+router.get(
+  '/:id',
+  routingUtils.asyncHandler(async (request, response) => {
+    const id = parseInt(request.params.id);
+    const todo = await todoGateway.getTodo(id);
+    console.log({ id, todo });
+    if (!todo) {
+      response.redirect('/todos');
+      return;
+    }
+
+    response.render('todoDetail.pug', { todo });
   }),
 );

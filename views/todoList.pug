@@ -13,7 +13,7 @@ block content
           action='/todos/' + todo.id,
           method='post'
         )
-          .flex-grow-1= todo.description
+          a.flex-grow-1(href='/todos/' + todo.id)= todo.description
           if !todo.done
             input(type='hidden', name='done', value='true')
             +submitButton('Mark Done')
